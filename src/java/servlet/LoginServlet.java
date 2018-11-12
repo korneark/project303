@@ -5,18 +5,28 @@
  */
 package servlet;
 
+import controller.Order1JpaController;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.UserTransaction;
+import model.Order1;
 
 /**
  *
  * @author Windows 10
  */
 public class LoginServlet extends HttpServlet {
+@Resource
+    UserTransaction utx;
+    @PersistenceUnit(unitName = "WebApplication1PU")
+    EntityManagerFactory emf;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,7 +39,21 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String id = request.getParameter("id");
+        String pin = request.getParameter("pin");
+        if (id != null && id.length() > 0 && pin != null && pin.length() > 0) {
+            Order1JpaController acCtrl = new Order1JpaControllerJpaController(utx, emf);
+            Order1 ac = acCtrl.findAccount(Integer.valueOf(id));
+            if (ac != null) {
+                if (ac.getPin() == Integer.valueOf(pin)) {
+                    request.getSession().setAttribute("ac", ac);
+                    request.setAttribute("message", "Invalid id or pin");
+                    getServletContext().getRequestDispatcher("/MyAccount").forward(request, response);
+                }
+            }
+            request.setAttribute("message", "Invalid id or pin");
+        }
+        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
