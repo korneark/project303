@@ -41,19 +41,19 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         String id = request.getParameter("id");
         String pin = request.getParameter("pin");
-        if (id != null && id.length() > 0 && pin != null && pin.length() > 0) {
-            Order1JpaController acCtrl = new Order1JpaControllerJpaController(utx, emf);
-            Order1 ac = acCtrl.findAccount(Integer.valueOf(id));
-            if (ac != null) {
-                if (ac.getPin() == Integer.valueOf(pin)) {
-                    request.getSession().setAttribute("ac", ac);
-                    request.setAttribute("message", "Invalid id or pin");
-                    getServletContext().getRequestDispatcher("/MyAccount").forward(request, response);
-                }
-            }
-            request.setAttribute("message", "Invalid id or pin");
-        }
-        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
+//        if (id != null && id.length() > 0 && pin != null && pin.length() > 0) {
+//            Order1JpaController acCtrl = new Order1JpaControllerJpaController(utx, emf);
+//            Order1 ac = acCtrl.findAccount(Integer.valueOf(id));
+//            if (ac != null) {
+//                if (ac.getPin() == Integer.valueOf(pin)) {
+//                    request.getSession().setAttribute("ac", ac);
+//                    request.setAttribute("message", "Invalid id or pin");
+//                    getServletContext().getRequestDispatcher("/MyAccount").forward(request, response);
+//                }
+//            }
+//            request.setAttribute("message", "Invalid id or pin");
+//        }
+//        getServletContext().getRequestDispatcher("/Login.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
