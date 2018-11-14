@@ -804,23 +804,7 @@ Either open the project in the IDE and make sure CopyLibs library
 exists or setup the property manually. For example like this:
  ant -Dlibs.CopyLibs.classpath=a/path/to/org-netbeans-modules-java-j2seproject-copylibstask.jar
                 </fail>
-        <taskdef classpath="${libs.CopyLibs.classpath}" resource="org/netbeans/modules/java/j2seproject/copylibstask/antlib.xml"/>
-    </target>
-    <target name="-init-ap-cmdline-properties">
-        <property name="annotation.processing.enabled" value="true"/>
-        <property name="annotation.processing.processors.list" value=""/>
-        <property name="annotation.processing.run.all.processors" value="true"/>
-        <property name="javac.processorpath" value="${javac.classpath}"/>
-        <property name="javac.test.processorpath" value="${javac.test.classpath}"/>
-        <condition property="ap.supported.internal" value="true">
-            <not>
-                <matches pattern="1\.[0-5](\..*)?" string="${javac.source}"/>
-            </not>
-        </condition>
-    </target>
-    <target depends="-init-ap-cmdline-properties" if="ap.supported.internal" name="-init-ap-cmdline-supported">
-        <condition else="" property="ap.processors.internal" value="-processor ${annotation.processing.processors.list}">
-            <isfalse value="${annotation.processing.run.all.processors}"/>
+    
         </condition>
         <condition else="" property="ap.proc.none.internal" value="-proc:none">
             <isfalse value="${annotation.processing.enabled}"/>
