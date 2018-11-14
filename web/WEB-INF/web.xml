@@ -12,14 +12,6 @@
         <servlet-name>HistoryServlet</servlet-name>
         <servlet-class>servlet.HistoryServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>ไก่ทีมมาแล้วจ้า</servlet-name>
-        <servlet-class>servlet.ไก่ทีมมาแล้วจ้า</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>กากทีมมาแล้วจ้า</servlet-name>
-        <servlet-class>servlet.กากทีมมาแล้วจ้า</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -31,14 +23,6 @@
     <servlet-mapping>
         <servlet-name>HistoryServlet</servlet-name>
         <url-pattern>/History</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ไก่ทีมมาแล้วจ้า</servlet-name>
-        <url-pattern>/_______________</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>กากทีมมาแล้วจ้า</servlet-name>
-        <url-pattern>/kakteam</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
