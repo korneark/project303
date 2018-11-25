@@ -1,6 +1,6 @@
 <%-- 
     Document   : Login
-    Created on : Nov 14, 2018, 1:24:59 PM
+    Created on : Nov 14, 2018, 1:56:54 PM
     Author     : Windows 10
 --%>
 
@@ -12,6 +12,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Login!</h1>
+        <h1></h1>
+        Username : <input type="text" name="username"><br><br>
+        Password : <input type="password" name="password"><br><br>
+        <input type="submit" value="Login">
+        <input type="submit" value="Register">
     </body>
 </html>
